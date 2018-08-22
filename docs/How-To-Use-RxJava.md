@@ -35,10 +35,10 @@ To create an Observable, you can either implement the Observable's behavior manu
 
 You use the Observable [`just( )`](http://reactivex.io/documentation/operators/just.html) and [`from( )`](http://reactivex.io/documentation/operators/from.html) methods to convert objects, lists, or arrays of objects into Observables that emit those objects:
 
-```groovy
+```java
 Observable<String> o = Observable.from("a", "b", "c");
 
-def list = [5, 6, 7, 8]
+List<Integer> list = {5, 6, 7, 8};
 Observable<Integer> o = Observable.from(list);
 
 Observable<String> o = Observable.just("one object");
@@ -52,27 +52,27 @@ You can implement asynchronous i/o, computational operations, or even “infinit
 
 #### Synchronous Observable Example
 
-```groovy
+```java
 /**
- * This example shows a custom Observable that blocks 
+ * This example shows a custom Observable that blocks
  * when subscribed to (does not spawn an extra thread).
  */
-def customObservableBlocking() {
+Observable<String> customObservableBlocking() {
     return Observable.create { aSubscriber ->
-        50.times { i ->
-            if (!aSubscriber.unsubscribed) {
-                aSubscriber.onNext("value_${i}")
-            }
-        }
-        // after sending all values we complete the sequence
+      for (i=0; i<50; i++) {
         if (!aSubscriber.unsubscribed) {
-            aSubscriber.onCompleted()
+            aSubscriber.onNext("value_" + i)
         }
+      }
+      // after sending all values we complete the sequence
+      if (!aSubscriber.unsubscribed) {
+          aSubscriber.onCompleted()
+      }
     }
-}
+  }
 
 // To see output:
-customObservableBlocking().subscribe { println(it) }
+customObservableBlocking().subscribe { System.out.println(it) }
 ```
 
 #### Asynchronous Observable Example
