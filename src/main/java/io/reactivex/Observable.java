@@ -14976,6 +14976,14 @@ public abstract class Observable<T> implements ObservableSource<T> {
      * Merges the specified ObservableSource into this ObservableSource sequence by using the {@code resultSelector}
      * function only when the source ObservableSource (this instance) emits an item.
      * <p>
+     * Note that if the element type of the flow is mutable, the comparison of the previous and current
+     * item may yield unexpected results if the items are mutated externally. Common cases are mutable
+     * {@code CharSequence}s or {@code List}s where subsequent objects are actually the same
+     * references modified before/after {@code distinctUntilChanged}. It is recommended mutable data is
+     * converted to an immutable one, such as `map(CharSequence::toString)` or
+     * `map(Collections::unmodifiableList)` for example, to avoid the situation.
+     *
+     * <p>
      * <img width="640" height="380" src="https://raw.github.com/wiki/ReactiveX/RxJava/images/rx-operators/withLatestFrom.png" alt="">
      *
      * <dl>
@@ -15009,9 +15017,18 @@ public abstract class Observable<T> implements ObservableSource<T> {
      * Combines the value emission from this ObservableSource with the latest emissions from the
      * other ObservableSources via a function to produce the output item.
      *
-     * <p>Note that this operator doesn't emit anything until all other sources have produced at
+     * <p>
+     * Note that this operator doesn't emit anything until all other sources have produced at
      * least one value. The resulting emission only happens when this ObservableSource emits (and
      * not when any of the other sources emit, unlike combineLatest).
+     * <p>
+     * Note that if the element type of the flow is mutable, the comparison of the previous and current
+     * item may yield unexpected results if the items are mutated externally. Common cases are mutable
+     * {@code CharSequence}s or {@code List}s where subsequent objects are actually the same
+     * references modified before/after {@code distinctUntilChanged}. It is recommended mutable data is
+     * converted to an immutable one, such as `map(CharSequence::toString)` or
+     * `map(Collections::unmodifiableList)` for example, to avoid the situation.
+     *
      * If a source doesn't produce any value and just completes, the sequence is completed immediately.
      * <p>
      * <img width="640" height="380" src="https://raw.github.com/wiki/ReactiveX/RxJava/images/rx-operators/withLatestFrom.png" alt="">
@@ -15045,9 +15062,18 @@ public abstract class Observable<T> implements ObservableSource<T> {
      * Combines the value emission from this ObservableSource with the latest emissions from the
      * other ObservableSources via a function to produce the output item.
      *
-     * <p>Note that this operator doesn't emit anything until all other sources have produced at
+     * <p>
+     * Note that this operator doesn't emit anything until all other sources have produced at
      * least one value. The resulting emission only happens when this ObservableSource emits (and
      * not when any of the other sources emit, unlike combineLatest).
+     * <p>
+     * Note that if the element type of the flow is mutable, the comparison of the previous and current
+     * item may yield unexpected results if the items are mutated externally. Common cases are mutable
+     * {@code CharSequence}s or {@code List}s where subsequent objects are actually the same
+     * references modified before/after {@code distinctUntilChanged}. It is recommended mutable data is
+     * converted to an immutable one, such as `map(CharSequence::toString)` or
+     * `map(Collections::unmodifiableList)` for example, to avoid the situation.
+     *
      * If a source doesn't produce any value and just completes, the sequence is completed immediately.
      * <p>
      * <img width="640" height="380" src="https://raw.github.com/wiki/ReactiveX/RxJava/images/rx-operators/withLatestFrom.png" alt="">
@@ -15085,9 +15111,18 @@ public abstract class Observable<T> implements ObservableSource<T> {
      * Combines the value emission from this ObservableSource with the latest emissions from the
      * other ObservableSources via a function to produce the output item.
      *
-     * <p>Note that this operator doesn't emit anything until all other sources have produced at
+     * <p>
+     * Note that this operator doesn't emit anything until all other sources have produced at
      * least one value. The resulting emission only happens when this ObservableSource emits (and
      * not when any of the other sources emit, unlike combineLatest).
+     * <p>
+     * Note that if the element type of the flow is mutable, the comparison of the previous and current
+     * item may yield unexpected results if the items are mutated externally. Common cases are mutable
+     * {@code CharSequence}s or {@code List}s where subsequent objects are actually the same
+     * references modified before/after {@code distinctUntilChanged}. It is recommended mutable data is
+     * converted to an immutable one, such as `map(CharSequence::toString)` or
+     * `map(Collections::unmodifiableList)` for example, to avoid the situation.
+     *
      * If a source doesn't produce any value and just completes, the sequence is completed immediately.
      * <p>
      * <img width="640" height="380" src="https://raw.github.com/wiki/ReactiveX/RxJava/images/rx-operators/withLatestFrom.png" alt="">
@@ -15128,9 +15163,18 @@ public abstract class Observable<T> implements ObservableSource<T> {
      * Combines the value emission from this ObservableSource with the latest emissions from the
      * other ObservableSources via a function to produce the output item.
      *
-     * <p>Note that this operator doesn't emit anything until all other sources have produced at
+     * <p>
+     * Note that this operator doesn't emit anything until all other sources have produced at
      * least one value. The resulting emission only happens when this ObservableSource emits (and
      * not when any of the other sources emit, unlike combineLatest).
+     * <p>
+     * Note that if the element type of the flow is mutable, the comparison of the previous and current
+     * item may yield unexpected results if the items are mutated externally. Common cases are mutable
+     * {@code CharSequence}s or {@code List}s where subsequent objects are actually the same
+     * references modified before/after {@code distinctUntilChanged}. It is recommended mutable data is
+     * converted to an immutable one, such as `map(CharSequence::toString)` or
+     * `map(Collections::unmodifiableList)` for example, to avoid the situation.
+     *
      * If a source doesn't produce any value and just completes, the sequence is completed immediately.
      * <p>
      * <img width="640" height="380" src="https://raw.github.com/wiki/ReactiveX/RxJava/images/rx-operators/withLatestFrom.png" alt="">
@@ -15157,9 +15201,18 @@ public abstract class Observable<T> implements ObservableSource<T> {
      * Combines the value emission from this ObservableSource with the latest emissions from the
      * other ObservableSources via a function to produce the output item.
      *
-     * <p>Note that this operator doesn't emit anything until all other sources have produced at
+     * <p>
+     * Note that this operator doesn't emit anything until all other sources have produced at
      * least one value. The resulting emission only happens when this ObservableSource emits (and
      * not when any of the other sources emit, unlike combineLatest).
+     * <p>
+     * Note that if the element type of the flow is mutable, the comparison of the previous and current
+     * item may yield unexpected results if the items are mutated externally. Common cases are mutable
+     * {@code CharSequence}s or {@code List}s where subsequent objects are actually the same
+     * references modified before/after {@code distinctUntilChanged}. It is recommended mutable data is
+     * converted to an immutable one, such as `map(CharSequence::toString)` or
+     * `map(Collections::unmodifiableList)` for example, to avoid the situation.
+     *
      * If a source doesn't produce any value and just completes, the sequence is completed immediately.
      * <p>
      * <img width="640" height="380" src="https://raw.github.com/wiki/ReactiveX/RxJava/images/rx-operators/withLatestFrom.png" alt="">
